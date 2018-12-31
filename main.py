@@ -12,10 +12,10 @@ if len(argv) < 2 or len(argv) > 4:
     print('Usage: {} <filename> [seed [forbidden,spells,...]]'.format(argv[0]))
     exit(1)
 
-if len(argv) == 2:
+if len(argv) == 2 or (len(argv) >= 3 and argv[2] == 'None'):
     seed = str(time()).split('.')[0]
 if len(argv) >= 3:
-    seed = argv[2]
+    seed = argv[2] if argv[2] 
 if len(argv) == 4:
     spells = argv[3].split(',')
     forbidden = [spell_map[i] for i in spells]
