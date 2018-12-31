@@ -4,6 +4,11 @@ Asura is a program for generating a 'four esper' challenge run for Final Fantasy
 
 Asura is copyrighted under the [GNU Affero General Public License, version 3](https://www.gnu.org/licenses/agpl-3.0.en.html).
 
+## Requirements
+
+* Python 3.4+
+* A US release of Final Fantasy III for the Super Nintendo OR any official Game Boy Advance release of Final Fantasy VI.
+
 ## Usage
 
 > `./main.py rom.ext [seed|None[ A,List,Of,Spells]]`
