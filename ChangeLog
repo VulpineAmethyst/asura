@@ -1,0 +1,8 @@
+0.4:
+- Complete rewrite.
+- Adds ability to blacklist spells.
+0.3:
+- GBA support!
+0.2:
+- Reworked learning rates. Rates overall lower.
+- Majority of output moved to a spoilers file.
