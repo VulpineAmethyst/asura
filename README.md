@@ -63,3 +63,11 @@ The spell selection mechanism uses two separate kinds of slots. The game itself 
             <td colspan="4"></td></tr>
     </tbody>
 </table>
+
+## Special Thanks
+
+The following people contributed to this project:
+
+* Lenophis: Provided the esper-gain offsets for the SNES US release.
+* [ff6hacking.com](https://ff6hacking.com): Provided the esper data offsets and lists.
+* Can of Worms: Figured out the esper-gain offsets for the GBA releases, including the bonus content espers.
