@@ -12,7 +12,7 @@ Asura is a program for generating a 'four esper' challenge run for Final Fantasy
 
 The final argument is a list of spells to prohibit. All official spell names are recognized.
 
-h2. Notes
+## Notes
 
 The spell selection mechanism uses two separate kinds of slots. The game itself supports up to five spells per esper, but for balance purposes each spell costs a number of points in the range [1,5], and each esper has 6 points to 'spend'. The following table enumerates the *current* point assignments (spells not enumerated cost one point):
 
