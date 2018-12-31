@@ -11,11 +11,11 @@ def generate(rng=None, mode='snes', forbidden=[]):
     seed(rng)
 
     if mode == 'snes':
-        max_espers = Esper.SNES_Count
-        max_spells = Spell.SNES_Count
+        max_espers = Esper.SNES_Count - 1
+        max_spells = Spell.SNES_Count - 1
     else:
-        max_espers = Esper.GBA_Count
-        max_spells = Spell.GBA_Count
+        max_espers = Esper.GBA_Count - 1
+        max_spells = Spell.GBA_Count - 1
 
     espers = {}
 
@@ -39,6 +39,7 @@ remove = [
 ]
 
 def write_rom(input_name, output_name, mode, espers):
+    offset = 0
     if mode == 'gba':
         offset = 0x70000
         spello = 0x62A480
@@ -55,7 +56,7 @@ def write_rom(input_name, output_name, mode, espers):
         rom.seek(i[0] + offset, 0)
         rom.write(b'\xFD' * i[1])
 
-    esper_list = espers.keys()
+    esper_list = list(espers.keys())
 
     # these four are the espers given when you reach Tina in Zozo
     rom.seek(0xAA824 + offset, 0); rom.write(bytes([esper_list[0] + 0x36]))
@@ -72,7 +73,7 @@ def write_rom(input_name, output_name, mode, espers):
 
         rom.seek(spello + esper * 11, 0)
         for spell in spells:
-            rom.write(bytes(spell[1], spell[0]))
+            rom.write(bytes([spell[1], spell[0]]))
 
         if leftover > 0:
             rom.write(b'\x00\xFF' * leftover)

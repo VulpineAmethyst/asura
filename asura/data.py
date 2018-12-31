@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-#
 # Copyright (C) 2019 Kiyoshi Aman
 #
 # This program is free software: you can redistribute it and/or modify
@@ -14,24 +12,10 @@
 # You should have received a copy of the GNU Affero General Public
 # License along with this program. If not, see
 # <https://www.gnu.org/licenses/>.
-#
-# This project was made possible by:
-# * Lenophis, who told me where the 'give this esper' bytes are
-# * ff6hacking.com, which hosts the data tables I used to pick from.
-# * CanOfWorms, for figuring out the GBA offsets.
-#
-# ChangeLog:
-# 0.3:
-# - GBA support! Purportedly works for J, U, *and* E versions.
-# 0.2:
-# - Preliminary work toward supporting GBA ROMs. This needs data I
-#   don't have to complete, however, but the cleanup it required was
-#   useful.
-# - Reworked learning rates. Rates should be overall lower now.
-# - Majority of output moved to a spoilers file.
 
 from copy import copy
 from enum import IntEnum
+from collections import defaultdict
 
 class Bonus(IntEnum):
     HP_10 = 0x00
@@ -168,7 +152,7 @@ spell_map = {
     'Poison':       Spell.Poison,
     'Firera':       Spell.Firera,
     'Fira':         Spell.Firera,
-    'Fire2':        Spell.Firera
+    'Fire2':        Spell.Firera,
     'Blizzardra':   Spell.Blizzardra,
     'Blizzara':     Spell.Blizzardra,
     'Ice2':         Spell.Blizzardra,
@@ -269,28 +253,32 @@ spell_map = {
 }
 
 slots = defaultdict(lambda: 1)
-slots[Spell.Ultima]     = 4
-slots[Spell.Quick]      = 4
-slots[Spell.Firega]     = 3
-slots[Spell.Thunderga]  = 3
-slots[Spell.Blizzardga] = 3
-slots[Spell.Meltdown]   = 3
-slots[Spell.Tornado]    = 3
-slots[Spell.Quake]      = 3
-slots[Spell.Arise]      = 3
-slots[Spell.Curega]     = 3
+slots[Spell.Quick]      = 5
+slots[Spell.Ultima]     = 5
+slots[Spell.Arise]      = 4
+slots[Spell.Blizzardga] = 4
+slots[Spell.Curega]     = 4
+slots[Spell.Firega]     = 4
+slots[Spell.Meltdown]   = 4
+slots[Spell.Quake]      = 4
+slots[Spell.Slowga]     = 4
+slots[Spell.Thunderga]  = 4
+slots[Spell.Tornado]    = 4
+slots[Spell.Death]      = 3
+slots[Spell.Gravityga]  = 3
 slots[Spell.Hastega]    = 3
-slots[Spell.Slowga]     = 3
+slots[Spell.NullStatus] = 3
 slots[Spell.Osmose]     = 3
-slots[Spell.Raise]      = 2
 slots[Spell.Curera]     = 2
 slots[Spell.Haste]      = 2
+slots[Spell.Raise]      = 2
+slots[Spell.Reraise]    = 2
 slots[Spell.Slow]       = 2
 
 slots_gba = copy(slots)
-slots_gba[Spell.Gravityja] = 3
-slots_gba[Spell.Flood]     = 3
-slots_gba[Spell.Valor]     = 3
+slots_gba[Spell.Gravityja] = 5
+slots_gba[Spell.Flood]     = 4
+slots_gba[Spell.Valor]     = 4
 
 class Esper(IntEnum):
     Ramuh         =  0
